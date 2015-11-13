@@ -1,11 +1,14 @@
+<?php
+
 /*****************************************************
  * Scenario Generator
  * Author: dabame dbm0100@yahoo.com
  * Generates scenarios for play in dabame_game
  ****************************************************/
-def class Scenario{
+
+class Scenario{
     function __construct(){
-        $this->setting = randomLine("settings.txt");
+        $this->setting = $this->randomLine("scenarioGen/settings.txt");
     }
     
     private $_antagonists; // array of antagonists in scenario
@@ -13,6 +16,10 @@ def class Scenario{
     private $_objectives; // array of objectives in scenario
     private $setting; // the setting for the scenario
 
+    public function displayScenario(){
+        echo $this->setting;
+    }
+    
     // fetches a random line from a file
     private function randomLine($filename){
         $lines = file($filename);
@@ -21,4 +28,6 @@ def class Scenario{
 }
 
 /* TESTING BAY */
-/* this is a change
+$myScenario = new Scenario();
+$myScenario->displayScenario();
+?>
